@@ -29,6 +29,14 @@ Then:
 ```
 docker-compose up
 ```
+Once the container `imposm` returns, this means that the initial data import finished. It is now possible to consume the WMS webservices available:
+
+```
+http://localhost:8280/cgi-bin/mapserv?map=/map/osm-default.map
+http://localhost:8280/cgi-bin/mapserv?map=/map/osm-bing.map
+http://localhost:8280/cgi-bin/mapserv?map=/map/osm-google.map
+http://localhost:8280/cgi-bin/mapserv?map=/map/osm-michelin.map
+```
 
 Customization
 =================
