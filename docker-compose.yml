@@ -1,0 +1,27 @@
+database:
+  image: kartoza/postgis
+  environment:
+    - POSTGRES_USER=osm
+    - POSTGRES_PASS=osm
+  volumes:
+    - pg_data:/var/lib/postgresql/data
+
+# this container is just meant to populate
+# the database with a PBF dump.
+# It will terminate once the import will be done.
+
+imposm:
+  build: ./imposm
+  links:
+    - database
+
+# This container will create a debian:jessie, along
+# with apache2 and a cgi-mapserver.
+# See mapserver/Dockerfile for the details.
+mapserver:
+  build: ./mapserver
+  links:
+    - database
+  ports:
+    - "8280:80"
+
