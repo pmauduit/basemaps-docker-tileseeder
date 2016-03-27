@@ -25,3 +25,11 @@ mapserver:
   ports:
     - "8280:80"
 
+geowebcache:
+  build: ./geowebcache
+  links:
+    - mapserver 
+  ports:
+    - "8080:8080"
+  volumes:
+    - geowebcache_cache:/tmp/defaultCache
