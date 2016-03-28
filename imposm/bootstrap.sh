@@ -18,4 +18,4 @@ else
   wget -O extract.pbf ${CUSTOM_PBF_EXTRACT_URL} ;
 fi
 
-imposm --read --write --optimize --mapping-file /imposm-mapping.py --connection postgis://osm:osm@database/osm extract.pbf
+imposm --read --write --overwrite-cache --optimize --mapping-file /imposm-mapping.py --connection postgis://osm:osm@database/osm extract.pbf
