@@ -32,10 +32,17 @@ docker-compose up
 Once the container `imposm` returns, this means that the initial data import finished. It is now possible to consume the WMS webservices available:
 
 ```
-http://localhost:8280/cgi-bin/mapserv?map=/map/osm-default.map
-http://localhost:8280/cgi-bin/mapserv?map=/map/osm-bing.map
-http://localhost:8280/cgi-bin/mapserv?map=/map/osm-google.map
-http://localhost:8280/cgi-bin/mapserv?map=/map/osm-michelin.map
+http://localhost:8280/map/default
+http://localhost:8280/map/bing
+http://localhost:8280/map/google
+http://localhost:8280/map/michelin
+```
+
+Seed with tilecloud-chain
+===========================
+
+```
+docker run --rm -ti --link basemapsdockertileseeder_mapserver_1:mapserver -v ${PWD}/tilecloud_chain/config.yaml:/tilecloud-chain/config.yaml yjacolin/tilecloud-chain -c /tilecloud-chain/config.yaml -l default
 ```
 
 Customization
@@ -55,3 +62,4 @@ imposm:
     - CUSTOM_PBF_EXTRACT_URL=http://download.geofabrik.de/europe-latest.osm.pbf
 
 ```
+
