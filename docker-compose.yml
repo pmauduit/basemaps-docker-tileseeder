@@ -1,7 +1,7 @@
 version: '2'
 services:
   database:
-    image: kartoza/postgis
+    build: ./postgis
     environment:
       - POSTGRES_USER=osm
       - POSTGRES_PASS=osm
